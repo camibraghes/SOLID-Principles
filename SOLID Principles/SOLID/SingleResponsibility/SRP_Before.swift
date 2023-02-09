@@ -1,35 +1,22 @@
 import Foundation
 
-
-
-class HandlerBefore {
-    
-    let apiHandler: APIHandler
-    let parseHandler: ParseHandler
-    let dataBase: DataBaseHandler
-    
-    init(apiHandler: APIHandler, parseHandler: ParseHandler, dataBase: DataBaseHandler) {
-        self.apiHandler = apiHandler
-        self.parseHandler = parseHandler
-        self.dataBase = dataBase
-    }
+class Handler {
     
     func handle() {
-       let data = apiHandler.requestDataToAPI()
-        let array = parseHandler.parseResponse(data: data)
-        dataBase.saveToDatabase(array: array)
+        let data = requestDataToAPI()
+        let array = parseResponse(data: data)
+        saveToDatabase(array: array)
     }
-}
-
-class APIHandler {
-    func requestDataToAPI() -> Data {
+  
+    private func requestDataToAPI() -> Data {
+        // Network request and wait the response
     }
-}
-
-class ParseHandler {
-    func parseResponse(data: Data) -> [String] {}
-}
-
-class DataBaseHandler {
-    func saveToDatabase(array: [String]) {}
+    
+    private func parseResponse(data: Data) -> [String] {
+        // Parse the network response into array
+    }
+   
+    private func saveToDatabase(array: [String]) {
+        // Save parsed response into database
+    }
 }
